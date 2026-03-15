@@ -1,0 +1,19 @@
+let mongoose = require('mongoose');
+
+let roleSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        unique: [true, "Role name must be unique"],
+        required: [true, "Role name is required"]
+    },
+    description: {
+        type: String,
+        default: ""
+    },
+    isDeleted: {
+        type: Boolean,
+        default: false
+    }
+}, { timestamps: true });
+
+module.exports = new mongoose.model('Role', roleSchema);
